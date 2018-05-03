@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="PorterDuffXfermodeView">
+        <attr name="porterDuffString" format="string"/>
+        <attr name="porterDuffDimension" format="dimension"/>
+        <attr name="porterDuffColor" format="color"/>
+        <attr name="porterDuffDrawable" format="color|reference"/>
+    </declare-styleable>
+</resources>

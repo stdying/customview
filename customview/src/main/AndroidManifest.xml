@@ -1,2 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          android:hardwareAccelerated="false"
           package="stdying.customview"/>
