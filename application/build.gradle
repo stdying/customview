@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        applicationId "stdying.application"
+        applicationId "stdying.customview"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1

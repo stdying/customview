@@ -12,6 +12,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -24,6 +25,8 @@ import android.view.View;
  * http://www.runoob.com/w3cnote/android-tutorial-xfermode-porterduff.html
  */
 public class PorterDuffXfermodeView extends View {
+    private static final String TAG = "PorterDuffXfermodeView";
+
     private String mporterDuffString; // TODO: use a default from R.string...string
     private int mporterDuffColor = Color.RED; // TODO: use a default from R.color...
     private float mporterDuffDimension = 0; // TODO: use a default from R.dimen...
@@ -125,6 +128,60 @@ public class PorterDuffXfermodeView extends View {
 
         Paint.FontMetrics fontMetrics = mTextPaint.getFontMetrics();
         mTextHeight = fontMetrics.bottom;
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        Log.i(TAG, "onLayout: ");
+        Log.i(TAG, "onLayout: left:" + left + " top:" + top + " right:" + right + " bottom:" + bottom);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+
+        Log.i(TAG, "onMeasure: ");
+
+        Log.i(TAG, "onMeasure: UNSPECIFIED: " + MeasureSpec.UNSPECIFIED);
+        Log.i(TAG, "onMeasure: EXACTLY: " + MeasureSpec.EXACTLY);
+        Log.i(TAG, "onMeasure: AT_MOST: " + MeasureSpec.AT_MOST);
+
+        int widthsize = MeasureSpec.getSize(widthMeasureSpec);      //取出宽度的确切数值
+        int widthmode = MeasureSpec.getMode(widthMeasureSpec);      //取出宽度的测量模式
+        Log.i(TAG, "onMeasure: widthsize:" + widthsize + " widthmode: " + widthmode);
+
+        int heightsize = MeasureSpec.getSize(heightMeasureSpec);    //取出高度的确切数值
+        int heightmode = MeasureSpec.getMode(heightMeasureSpec);    //取出高度的测量模式
+        Log.i(TAG, "onMeasure: heightsize:" + heightsize + " heightmode: " + heightmode);
+
+        int width = measureDimension(300, widthMeasureSpec);
+        int height = measureDimension(300, heightMeasureSpec);
+        setMeasuredDimension(width, height);
+    }
+
+    public int measureDimension(int defaultSize, int measureSpec) {
+        int result;
+
+        int specMode = MeasureSpec.getMode(measureSpec);
+        int specSize = MeasureSpec.getSize(measureSpec);
+
+        if (specMode == MeasureSpec.EXACTLY) {
+            result = specSize;
+        } else {
+            result = defaultSize;   //UNSPECIFIED
+            if (specMode == MeasureSpec.AT_MOST) {
+                result = Math.min(result, specSize);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        Log.i(TAG, "onSizeChanged: w:" + w + " h:" + h + " oldw:" + oldw + " oldh:" + oldh);
     }
 
     @Override
