@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="FloatView">
+        <attr name="floatviewString" format="string"/>
+        <attr name="floatviewDimension" format="dimension"/>
+        <attr name="floatviewColor" format="color"/>
+        <attr name="floatviewDrawable" format="color|reference"/>
+    </declare-styleable>
+</resources>
