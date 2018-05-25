@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="LeftLoading">
+        <attr name="leftloadingString" format="string"/>
+        <attr name="leftloadingDimension" format="dimension"/>
+        <attr name="leftloadingColor" format="color"/>
+        <attr name="leftloadingDrawable" format="color|reference"/>
+    </declare-styleable>
+</resources>
